@@ -1,5 +1,6 @@
-# slack-entities
+# slack-entities-extended
 
+Fork of [slack entities](https://github.com/flipactual/slack-entitiess)
 Methods for extracting entities like channels and users from Slack messages.
 
 ## Example:
