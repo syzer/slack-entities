@@ -23,6 +23,7 @@ const html = '<HTML/>'
 const internalFile = 'https://austinprivatelibrary.slack.com/files/flip/F00000000/README.md'
 const externalLink = 'https://get.slack.help/hc/en-us/articles/204399343-Sharing-links-in-Slack'
 const httpsLinkWithQuery = 'https://www.google.com/?url=has-querystring'
+const httpsLingWithParams = 'https://png-server-16202.herokuapp.com/b4a18e,796557,523f35,644b40,67543c'
 
 const toTag = str => '<' + str + '>'
 const toLink = str => ({
@@ -58,9 +59,6 @@ describe('getFiles', () => {
     ])
   })
 })
-
-// TODO emails 'mailto:somebody@google.com' => '<mailto:somebody@google.com|somebody@google.com>'
-// @see http://jsbin.com/eqocuh/5/edit?html,js,output
 describe('getLinks', () => {
   it('extracts tags for links', () => {
     assert.deepEqual(getLinks(`${toTag(internalFile)}`), [
@@ -68,6 +66,9 @@ describe('getLinks', () => {
     ])
     assert.deepEqual(getLinks(`Have this query string ${toTag(httpsLinkWithQuery)}`), [
       toLink(httpsLinkWithQuery),
+    ])
+    assert.deepEqual(getLinks(`Have this query string with params ${toTag(httpsLingWithParams)}`), [
+      toLink(httpsLingWithParams),
     ])
   })
 })
